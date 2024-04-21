@@ -13,6 +13,16 @@ const data = {
       svg: "fa fa-linkedin",
     },
     {
+      href: "https://wa.me/77027449952",
+      type: "fa",
+      svg: "fa fa-whatsapp",
+    },
+    {
+      href: "https://t.me/gidragir",
+      type: "fa",
+      svg: "fa fa-telegram",
+    },
+    {
       href: "https://github.com/gidragir",
       type: "fa",
       svg: "fa fa-github",
