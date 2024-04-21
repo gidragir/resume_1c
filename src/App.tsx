@@ -43,7 +43,7 @@ function App() {
               />
             </div>
 
-            <div className="border-2 mt-4 md:mt-14 border-black text-center bg-zinc-300 p-2">
+            <div className="border-2 mt-4 md:mt-14 border-stone-300 rounded-sm text-center bg-zinc-300 shadow-sm shadow-black p-2">
               <a href={resume} download>
                 Скачать резюме
               </a>
