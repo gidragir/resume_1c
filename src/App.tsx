@@ -1,6 +1,7 @@
 import "./scss/index.scss"
 import "./css/font-awesome.min.css"
 
+import resume from "./assets/Ilya Balter.pdf"
 import me from "./assets/me.jpeg"
 import certs from "./assets/certs"
 import links from "./assets/links"
@@ -41,6 +42,12 @@ function App() {
                 alt=""
               />
             </div>
+
+            <div className="border-2 mt-4 md:mt-14 border-black text-center bg-zinc-300 p-2">
+              <a href={resume} download>
+                Скачать резюме
+              </a>
+            </div>
           </div>
 
           <div className="profile">
@@ -49,11 +56,20 @@ function App() {
             </div>
 
             <div>
-              <span>Являюсь сертифицированным разработчиком 1С. Основной 1С, с которой работаю, является версия 8.3. Иммею богатый опыт разработки обменов, итеграций, новых модулей и отчетов.</span>
+              <span>
+                Являюсь сертифицированным разработчиком 1С. Основной 1С, с
+                которой работаю, является версия 8.3. Иммею богатый опыт
+                разработки обменов, итеграций, новых модулей и отчетов.
+              </span>
               <br />
-              <span>При работе с проектами в основном работаю один. Имею опыт работы с заказчиками и составления ТЗ с нуля.</span>
+              <span>
+                При работе с проектами в основном работаю один. Имею опыт работы
+                с заказчиками и составления ТЗ с нуля.
+              </span>
               <br />
-              <span>Для меня в работе важен постоянным поток задач и развитие.</span>
+              <span>
+                Для меня в работе важен постоянным поток задач и развитие.
+              </span>
             </div>
 
             <div className="">
