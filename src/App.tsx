@@ -1,7 +1,7 @@
 import "./scss/index.scss"
 import "./css/font-awesome.min.css"
 
-import me from "./assets/me.jpg"
+import me from "./assets/me.jpeg"
 import certs from "./assets/certs"
 import links from "./assets/links"
 import skills from "./assets/skills"
@@ -129,7 +129,7 @@ function App() {
         <div className="flex flex-wrap flex-col md:flex-row justify-around items-center">
           {certsData.map((cert, index) => {
             return (
-              <img key={index} className="h-[25rem] pt-3 md:pt-0" src={cert} />
+              <img key={index} className="h-[25rem] pt-3 md:p-4" src={cert} />
             )
           })}
         </div>
@@ -161,7 +161,7 @@ function ExperienceCard({
   return (
     <div className="info experience-content">
       <span className="period-experience">
-        {periodStart} <br className="hidden md:block" /> {periodEnd}
+        {periodStart} <br className="hidden md:block" /> <p className="inline-block md:hidden"> - </p> {periodEnd}
       </span>
       <h3 className="specialty-name">{company}</h3>
       <p className="prg-experience">{description}</p>
