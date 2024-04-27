@@ -6,7 +6,7 @@
   * {
     @apply box-border;
     letter-spacing: 0.5px;
-    font-family: "Oswald", sans-serif;
+    font-family: "Oswald ", sans-serif;
     font-size: 1.02em;
     line-height: 1.42857143;
   }
@@ -66,7 +66,7 @@
     > div {
       @apply bg-neutral-100 shadow-md p-8 mb-6 rounded-md md:h-96;
       > div > h3 {
-        @apply text-white inline-block min-h-[50px] relative w-[268px] text-center;
+        @apply text-white inline-block min-h-[50px] relative w-[274px] text-center;
         background-color: #0487cc;
         margin-bottom: 18px;
         padding: 15px 20px;
