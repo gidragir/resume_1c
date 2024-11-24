@@ -1,4 +1,8 @@
-import hh from "./hh.svg"
+import hh from "@/assets/hh.svg"
+import telegram from "@/assets/telegram.svg"
+import whatsapp from "@/assets/whatsapp.svg"
+import linkedin from "@/assets/linkedin.svg"
+import github from "@/assets/github.svg"
 
 const data = {
   data: [
@@ -9,23 +13,23 @@ const data = {
     },
     {
       href: "",
-      type: "fa",
-      svg: "fa fa-linkedin",
+      type: "svg",
+      svg: linkedin,
     },
     {
       href: "https://wa.me/77027449952",
-      type: "fa",
-      svg: "fa fa-whatsapp",
+      type: "svg",
+      svg: whatsapp
     },
     {
       href: "https://t.me/gidragir",
-      type: "fa",
-      svg: "fa fa-telegram",
+      type: "svg",
+      svg: telegram,
     },
     {
       href: "https://github.com/gidragir",
-      type: "fa",
-      svg: "fa fa-github",
+      type: "svg",
+      svg: github,
     },
   ],
 }

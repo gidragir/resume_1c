@@ -1,12 +1,14 @@
-import "./scss/index.scss"
-import "./css/font-awesome.min.css"
+import React from 'react'
 
-import resume from "./assets/Ilya Balter.pdf"
-import me from "./assets/me.jpeg"
-import certs from "./assets/certs"
-import links from "./assets/links"
-import skills from "./assets/skills"
-import experiences from "./assets/experiences"
+import "@/scss/index.scss"
+import "@/css/font-awesome.min.css"
+
+import resume from "@/assets/Ilya Balter.pdf"
+import me from "@/assets/me.jpeg"
+import certs from "@/assets/certs"
+import links from "@/assets/links"
+import skills from "@/assets/skills"
+import experiences from "@/assets/experiences"
 interface linkProps {
   href: string
   type: string
@@ -43,7 +45,7 @@ function App() {
               />
             </div>
 
-            <div className="border-2 mt-4 md:mt-14 border-stone-300 rounded-sm text-center bg-zinc-300 shadow-sm shadow-black p-2">
+            <div className="p-2 mt-4 text-center border-2 rounded-sm shadow-sm md:mt-14 border-stone-300 bg-zinc-300 shadow-black">
               <a href={resume} download>
                 Скачать резюме
               </a>
@@ -87,7 +89,7 @@ function App() {
             </div>
 
             <div className="">
-              <ul className="ul-social-links space-x-2">
+              <ul className="space-x-2 ul-social-links">
                 {linksData.map((link, index) => {
                   return (
                     <li key={index} className="li-social-links">
@@ -121,7 +123,7 @@ function App() {
           <h2>НАВЫКИ</h2>
         </div>
 
-        <div className="flex flex-wrap flex-col md:flex-row">
+        <div className="flex flex-col flex-wrap md:flex-row">
           {skillsData.map((skill, index) => {
             return <SkillCard key={index} {...skill} />
           })}
@@ -133,7 +135,7 @@ function App() {
           <h2>КАРЬЕРА</h2>
         </div>
 
-        <div className="md:ml-20 relative px-4 lg:w-5/6">
+        <div className="relative px-4 md:ml-20 lg:w-5/6">
           <div className="all-experience">
             {experiencesData.map((experience, index) => {
               return <ExperienceCard key={index} {...experience} />
@@ -147,7 +149,7 @@ function App() {
           <h2>СЕРТИФИКАТЫ</h2>
         </div>
 
-        <div className="flex flex-wrap flex-col md:flex-row justify-around items-center">
+        <div className="flex flex-col flex-wrap items-center justify-around md:flex-row">
           {certsData.map((cert, index) => {
             return (
               <img key={index} className="h-[25rem] pt-3 md:p-4" src={cert} />
