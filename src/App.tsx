@@ -1,5 +1,3 @@
-import React from "react"
-
 import "@/scss/index.scss"
 import "@/css/font-awesome.min.css"
 
