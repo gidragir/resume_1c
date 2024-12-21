@@ -1,18 +1,18 @@
-import hh from "@/assets/hh.svg"
-import telegram from "@/assets/telegram.svg"
-import whatsapp from "@/assets/whatsapp.svg"
-import linkedin from "@/assets/linkedin.svg"
-import github from "@/assets/github.svg"
+import hh from "@/assets/icons/hh.svg"
+import telegram from "@/assets/icons/telegram.svg"
+import whatsapp from "@/assets/icons/whatsapp.svg"
+import linkedin from "@/assets/icons/linkedin.svg"
+import github from "@/assets/icons/github.svg"
 
 const data = {
   data: [
     {
-      href: "https://hh.kz/resume/e3f66357ff0bc66b8e0039ed1f75376b347734",
+      href: "https://hh.kz/resume/c9d86af0ff0d1a7e6a0039ed1f733850576152",
       type: "svg",
       svg: hh,
     },
     {
-      href: "",
+      href: "https://www.linkedin.com/in/ilya-balter-02427723a",
       type: "svg",
       svg: linkedin,
     },
