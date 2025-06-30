@@ -49,6 +49,9 @@ jobs:
       - name: Install project dependencies
         run: pnpm install --no-frozen-lockfile
 
+      - name: Install sharp (required for Astro image optimization)
+        run: pnpm add sharp
+
       - name: Build Astro project
         run: pnpm run build
 
