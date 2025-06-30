@@ -1,0 +1,47 @@
+---
+import { getCollection } from 'astro:content'
+
+import Experience from 'components/Experience.astro'
+
+const experiences = (await getCollection('experiences')).sort((a, b) => {
+  return (
+    new Date(b.data.startDate).getTime() - new Date(a.data.startDate).getTime()
+  )
+})
+
+function getDateString(date?: Date) {
+  if (!date) return 'Настоящее время'
+
+  const formattedDate = date.toLocaleDateString('ru-RU', {
+    year: 'numeric',
+    month: 'long',
+  })
+  const parts = formattedDate.split(' ')
+  parts[0] = parts[0].charAt(0).toUpperCase() + parts[0].slice(1)
+  if (parts[parts.length - 1] && parts[parts.length - 1].endsWith('г.')) {
+    parts[parts.length - 1] = parts[parts.length - 1].slice(0, -2)
+  }
+
+  return parts.join(' ')
+}
+---
+
+<section id="experience" class="mb-16 scroll-mt-20">
+  <h2 class="mb-8 text-3xl font-bold text-stone-900">Опыт работы</h2>
+
+  <div class="space-y-4">
+    {
+      experiences.map((experience) => {
+        return (
+          <Experience
+            company={experience.data.company}
+            position={experience.data.position}
+            startDate={getDateString(experience.data.startDate)}
+            endDate={getDateString(experience.data.endDate)}
+            description={experience.data.description}
+          />
+        )
+      })
+    }
+  </div>
+</section>

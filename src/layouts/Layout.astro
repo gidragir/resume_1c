@@ -1,0 +1,94 @@
+---
+import 'styles/global.css'
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Илья Балтер</title>
+    <meta
+      name="description"
+      content="Senior 1С-разработчик с опытом работы в автоматизации бизнес-процессов на платформе 1С:Предприятие 8.3."
+    />
+    <meta
+      name="keywords"
+      content="Senior 1С-разработчик, 1С, резюме, опыт работы 1С, навыки 1С, EDT, СКД, автоматизация, ERP, УТ, Бухгалтерия, ЗУП, интеграция 1С, Казахстан, Алматы | Senior 1C developer, 1C, resume, 1C experience, 1C skills, EDT, СКД, automation, ERP, UT, Accounting, ZUP, 1C integration, Kazakhstan, Almaty"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <meta name="generator" content={Astro.generator} />
+  </head>
+  <body class="text-stone-800">
+    <slot />
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button')
+        const mobileMenu = document.getElementById('mobile-menu')
+        mobileMenuButton?.addEventListener('click', () => {
+          mobileMenu?.classList.toggle('hidden')
+        })
+        document.querySelectorAll('#mobile-menu a').forEach((link) => {
+          link.addEventListener('click', () => {
+            mobileMenu?.classList.add('hidden')
+          })
+        })
+
+        // Timeline accordion
+        const timelineItems = document.querySelectorAll(
+          '.timeline-item .item-header'
+        )
+        timelineItems.forEach((header) => {
+          header.addEventListener('click', () => {
+            const item = header.parentElement
+            item?.classList.toggle('open')
+          })
+        })
+
+        // Nav link active state on scroll
+        const sections = document.querySelectorAll('section')
+        const navLinks = document.querySelectorAll('.nav-link')
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                navLinks.forEach((link) => {
+                  link.classList.remove('active')
+                  if (
+                    link.getAttribute('href')?.substring(1) === entry.target.id
+                  ) {
+                    link.classList.add('active')
+                  }
+                })
+              }
+            })
+          },
+          { rootMargin: '-50% 0px -49% 0px' }
+        )
+
+        sections.forEach((section) => {
+          observer.observe(section)
+        })
+      })
+    </script>
+  </body>
+</html>
+
+<style>
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f5f5f4;
+  }
+</style>

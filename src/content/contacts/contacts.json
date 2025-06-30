@@ -1,0 +1,27 @@
+[
+  {
+    "link": "https://t.me/gidragir",
+    "icon": "fab fa-telegram-plane",
+    "title": "@gidragir"
+  },
+  {
+    "link": "https://wa.me/+77027449952",
+    "icon": "fab fa-whatsapp",
+    "title": "+7 702 744 99 52"
+  },
+  {
+    "link": "https://github.com/gidragir",
+    "icon": "fab fa-github",
+    "title": "Gidragir"
+  },
+  {
+    "link": "mailto:ilyabalter1@gmail.com",
+    "icon": "fas fa-envelope",
+    "title": "ilyabalter1@gmail.com"
+  },
+  {
+    "link": "https://hh.ru/resume/c9d86af0ff0d1a7e6a0039ed1f733850576152",
+    "icon": "fas fa-briefcase",
+    "title": "HeadHunter"
+  }
+]

@@ -1,0 +1,53 @@
+---
+import Link from 'components/Link.astro'
+
+const links = [
+  { href: '#about', title: 'Обо мне' },
+  { href: '#experience', title: 'Опыт' },
+  { href: '#skills', title: 'Навыки' },
+  { href: '#education', title: 'Образование' },
+]
+---
+
+<header class="sticky top-0 z-50 bg-stone-200/80 backdrop-blur-sm">
+  <nav class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-16 items-center justify-between">
+      <div class="flex-shrink-0">
+        <span class="text-xl font-bold text-stone-900">Илья Балтер</span>
+      </div>
+      <div class="hidden md:block">
+        <div class="ml-10 flex items-baseline space-x-4">
+          {links.map((link) => <Link href={link.href} title={link.title} />)}
+        </div>
+      </div>
+      <div class="flex items-center md:hidden">
+        <button
+          id="mobile-menu-button"
+          class="inline-flex items-center justify-center rounded-md p-2 text-stone-700 hover:text-teal-600 focus:outline-none"
+        >
+          <svg
+            class="h-6 w-6"
+            stroke="currentColor"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden">
+      <div class="space-y-1 px-2 pt-2 pb-3 sm:px-3">
+        {
+          links.map((link) => (
+            <Link href={link.href} title={link.title} mobile={true} />
+          ))
+        }
+      </div>
+    </div>
+  </nav>
+</header>

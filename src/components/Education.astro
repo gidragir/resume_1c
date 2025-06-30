@@ -1,0 +1,62 @@
+---
+import { getCollection } from 'astro:content'
+
+const certs = await getCollection('certs')
+const courses = await getCollection('courses')
+
+const education = {
+  higher: {
+    institution: 'Санкт-Петербургский гуманитарный университет профсоюзов',
+    field: 'Прикладная информатика в экономике',
+    degree: 'Бакалавр',
+    years: '2019 - 2024',
+  },
+  certs: certs[0]?.data,
+  courses: courses[0]?.data,
+}
+---
+
+<section id="education" class="mb-16 scroll-mt-20">
+  <h2 class="mb-8 text-3xl font-bold text-stone-900">Образование</h2>
+  <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+    <div class="rounded-xl bg-white p-6 shadow-sm">
+      <h3 class="mb-2 text-lg font-bold text-stone-800">Высшее образование</h3>
+      <p class="font-medium text-teal-700">
+        {education.higher.institution}
+      </p>
+      <p class="text-stone-600">{education.higher.field}</p>
+      <p class="text-sm text-stone-500">
+        {education.higher.years}, {education.higher.degree}
+      </p>
+    </div>
+    <div class="rounded-xl bg-white p-6 shadow-sm">
+      <h3 class="mb-2 text-lg font-bold text-stone-800">Сертификаты</h3>
+      <ul class="mb-4 space-y-2">
+        {
+          education.certs.map((cert) => {
+            return (
+              <li class="text-stone-600">
+                <span class="font-medium text-teal-700">{cert.name}</span> -{' '}
+                {cert.year}
+              </li>
+            )
+          })
+        }
+      </ul>
+      <hr class="my-4 border-t border-stone-200" />
+      <h3 class="mb-2 text-lg font-bold text-stone-800">Курсы</h3>
+      <ul class="space-y-2">
+        {
+          education.courses.map((course) => {
+            return (
+              <li class="text-stone-600">
+                <span class="font-medium text-teal-700">{course.name}</span> -{' '}
+                {course.year}
+              </li>
+            )
+          })
+        }
+      </ul>
+    </div>
+  </div>
+</section>

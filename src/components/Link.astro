@@ -1,0 +1,24 @@
+---
+interface Props {
+  href: string
+  title: string
+  mobile?: boolean
+}
+
+const { href, title, mobile = false } = Astro.props
+
+const baseStyle =
+  'nav-link rounded-md px-3 py-2 font-medium text-stone-700 hover:text-teal-600'
+const linkStyle = mobile ? 'block text-base' : ' text-sm'
+
+const mainStyle = `${baseStyle} ${linkStyle}`
+---
+
+<style>
+  .nav-link.active {
+    color: #0d9488;
+    font-weight: 500;
+  }
+</style>
+
+<a href={href} class={mainStyle}>{title}</a>

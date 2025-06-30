@@ -1,0 +1,53 @@
+---
+const { company, position, startDate, endDate, description } = Astro.props
+---
+
+<style>
+  .timeline-item .details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+  }
+  .timeline-item.open .details {
+    max-height: 1000px; /* Adjust as needed */
+    transition: max-height 0.7s ease-in;
+  }
+  .timeline-item .icon {
+    transition: transform 0.3s ease;
+  }
+  .timeline-item.open .icon {
+    transform: rotate(90deg);
+  }
+</style>
+<div
+  class="timeline-item rounded-xl border border-transparent bg-white p-6 shadow-sm transition-colors hover:border-teal-200"
+>
+  <div class="item-header flex cursor-pointer items-center justify-between">
+    <div>
+      <h3 class="text-lg font-bold text-stone-800">
+        {company}
+      </h3>
+      <p class="font-medium text-teal-700">{position}</p>
+      <p class="text-sm text-stone-500">{startDate} – {endDate}</p>
+    </div>
+    <div class="icon text-teal-500">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        ><path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M9 5l7 7-7 7"></path></svg
+      >
+    </div>
+  </div>
+  <div class="details mt-4 border-t border-stone-200 pt-4 text-stone-600">
+    <ul class="list-disc space-y-2 pl-5">
+      {description.map((item: string) => <li>{item}</li>)}
+    </ul>
+  </div>
+</div>

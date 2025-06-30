@@ -1,0 +1,36 @@
+---
+import { getCollection } from 'astro:content'
+
+import Pill from 'components/Pill.astro'
+const skills = await getCollection('skills')
+---
+
+<section id="skills" class="mb-16 scroll-mt-20">
+  <h2 class="mb-8 text-3xl font-bold text-stone-900">Ключевые навыки</h2>
+
+  <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+    {
+      skills[0]?.data.map((skill, index) => {
+        const isLastItem = index === skills[0]?.data.length - 1
+
+        const baseStyle = 'bg-white p-6 rounded-xl shadow-sm'
+
+        const mainStyle = isLastItem
+          ? `${baseStyle} md:col-span-2 lg:col-span-2`
+          : baseStyle
+        return (
+          <div class={mainStyle}>
+            <h3 class="mb-4 text-lg font-bold text-stone-800">
+              {skill.category}
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              {skill.skills.map((item) => (
+                <Pill title={item} style={skill.style} />
+              ))}
+            </div>
+          </div>
+        )
+      })
+    }
+  </div>
+</section>

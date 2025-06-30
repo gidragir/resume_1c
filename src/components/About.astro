@@ -1,0 +1,97 @@
+---
+import { Image } from 'astro:assets'
+import { getCollection } from 'astro:content'
+
+import meJpeg from 'assets/me.jpeg'
+
+import Contact from 'components/Contact.astro'
+
+const contacts = await getCollection('contacts')
+const experiences = (await getCollection('experiences')).sort((a, b) => {
+  return (
+    new Date(b.data.startDate).getTime() - new Date(a.data.startDate).getTime()
+  )
+})
+
+const workExperience = calculateExperience(
+  experiences[experiences.length - 1].data.startDate
+)
+const me = {
+  name: 'Балтер Илья Николаевич',
+  position: 'Senior 1C Developer',
+  description: `1С разработчик с ${workExperience} годами опыта в автоматизации бизнес-процессов на платформе 1С:Предприятие 8.3. Специализируюсь на разработке нового функционала, сложных интеграциях, оптимизации кода, а также создании регуляторных отчетов. Стремлюсь применить свой опыт для решения сложных задач и внести вклад в развитие компании.`,
+}
+
+function calculateExperience(startDate: Date) {
+  const minDate = startDate
+  const maxDate = new Date()
+
+  let years = maxDate.getFullYear() - minDate.getFullYear()
+  let months = maxDate.getMonth() - minDate.getMonth()
+
+  if (months < 0) {
+    years--
+    months += 12
+  }
+
+  return `${years}.${months}`
+}
+---
+
+<section id="about" class="mb-16 scroll-mt-20">
+  <div
+    class="flex flex-col items-center gap-8 rounded-xl bg-white p-8 shadow-sm md:flex-row md:items-start"
+  >
+    <div
+      class="h-32 w-32 flex-shrink-0 overflow-hidden rounded-full border-4 border-teal-300 shadow-md md:h-40 md:w-40"
+    >
+      <Image
+        src={meJpeg}
+        width={meJpeg.width}
+        height={meJpeg.height}
+        alt="Фото Балтер Илья Николаевич"
+        class="h-full w-full object-cover"
+        loading="lazy"
+      />
+    </div>
+    <div>
+      <h1 class="mb-2 text-4xl font-bold text-stone-900 md:text-5xl">
+        {me.name}
+      </h1>
+      <h2 class="mb-6 text-xl font-medium text-teal-600 md:text-2xl">
+        {me.position}
+      </h2>
+      <p class="mb-6 text-base leading-relaxed text-stone-600">
+        {me.description}
+      </p>
+      <div class="flex flex-col items-start gap-y-3 text-stone-700">
+        <div class="flex flex-wrap gap-x-6 gap-y-3">
+          {
+            contacts[0]?.data.slice(0, 2).map((contact) => {
+              return (
+                <Contact
+                  link={contact.link}
+                  icon={contact.icon}
+                  title={contact.title}
+                />
+              )
+            })
+          }
+        </div>
+        <div class="flex flex-wrap gap-x-6 gap-y-3">
+          {
+            contacts[0]?.data.slice(2).map((contact) => {
+              return (
+                <Contact
+                  link={contact.link}
+                  icon={contact.icon}
+                  title={contact.title}
+                />
+              )
+            })
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
