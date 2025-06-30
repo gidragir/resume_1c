@@ -1,48 +1,62 @@
 name: Deploy to GitHub Pages
+
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
+
 permissions:
   contents: read
   pages: write
   id-token: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
+
       - name: Install system dependencies for Sharp
         run: |
           sudo apt-get update
           sudo apt-get install -y build-essential libvips-dev
 
-      # ШАГ 2: Настройка pnpm
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
       - name: Setup pnpm
         uses: pnpm/action-setup@v3
         with:
-          version: latest
+          version: 8
           run_install: false
+
       - name: Get pnpm store directory
         id: pnpm-cache
         run: |
           echo "PNPM_CACHE_DIR=$(pnpm store path)" >> $GITHUB_OUTPUT
+
       - name: Setup pnpm cache
         uses: actions/cache@v4
         with:
           path: ${{ steps.pnpm-cache.outputs.PNPM_CACHE_DIR }}
-          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}-v2
           restore-keys: |
             ${{ runner.os }}-pnpm-
+
       - name: Install project dependencies
         run: pnpm install --no-frozen-lockfile
+
       - name: Build Astro project
         run: pnpm run build
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
+
   deploy:
     needs: build
     runs-on: ubuntu-latest

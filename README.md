@@ -14,14 +14,16 @@
 
 ## Структура проекта
 
-├── public/ # Статические ресурсы (favicon, изображения)
-├── src/
-│ ├── components/ # Компоненты Astro
-│ ├── layouts/ # Макеты страниц
-│ ├── pages/ # Страницы Astro (index.astro - главная страница резюме)
-│ ├── styles/ # Глобальные стили (tailwind.css, global.css)
-│ └── content/ # JSON или MD файлы с данными резюме
-├── astro.config.mjs # Конфигурация Astro
-├── tailwind.config.cjs # Конфигурация Tailwind CSS
-├── package.json # Зависимости и скрипты
-└── README.md
+.
+├── public/                 # Статические ресурсы (favicon, изображения, шрифты)
+├── src/                    # Исходный код проекта
+│   ├── components/         # Переиспользуемые компоненты Astro (например, Header, ExperienceItem)
+│   ├── layouts/            # Макеты страниц (например, основной Layout для всего сайта)
+│   ├── pages/              # Страницы Astro, которые становятся маршрутами (например, index.astro - главная страница резюме)
+│   ├── styles/             # Глобальные стили (tailwind.css, global.css)
+│   └── content/            # Опционально: JSON или Markdown/MDX файлы с данными резюме (например, для динамического контента)
+├── astro.config.mjs        # Основной файл конфигурации Astro
+├── tailwind.config.cjs     # Файл конфигурации Tailwind CSS
+├── package.json            # Информация о проекте, зависимости и скрипты
+├── pnpm-lock.yaml          # Lock-файл для pnpm, фиксирующий версии зависимостей
+└── README.md               # Этот файл с описанием проекта
