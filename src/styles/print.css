@@ -1,0 +1,80 @@
+@media print {
+  body {
+    transform: scale(0.75);
+    transform-origin: top left;
+    width: 133%;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  main {
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  section {
+    margin-bottom: 0 !important;
+  }
+  .grid {
+    gap: 0 !important;
+    --tw-shadow:
+      0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)),
+      0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+    box-shadow:
+      var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
+      var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  .grid div {
+    padding: 0 !important;
+    box-shadow: none !important;
+  }
+  .timeline-item {
+    page-break-inside: avoid;
+    padding: 0 !important;
+    margin-bottom: 0 !important;
+  }
+  .item-header div {
+    gap: 0 !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+  #education div div {
+    gap: 0 !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+  .timeline-item .details {
+    max-height: none !important;
+    overflow: visible !important;
+    transition: none !important;
+  }
+  .details {
+    margin-top: 0 !important;
+    border: none !important;
+  }
+  #skills {
+    page-break-inside: avoid;
+  }
+  div .flex .flex-wrap,
+  div .grid .grid-cols-1 {
+    gap: 0 !important;
+    padding: 0 !important;
+  }
+  span text-sm {
+    padding-inline: 0 !important;
+  }
+  #education div {
+    gap: 0 !important;
+  }
+  .icon {
+    display: none !important;
+  }
+}

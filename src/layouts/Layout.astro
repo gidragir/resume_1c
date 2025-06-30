@@ -1,5 +1,6 @@
 ---
 import 'styles/global.css'
+import 'styles/print.css'
 ---
 
 <!doctype html>
@@ -33,7 +34,6 @@ import 'styles/global.css'
     <slot />
     <script>
       document.addEventListener('DOMContentLoaded', function () {
-        // Mobile menu toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button')
         const mobileMenu = document.getElementById('mobile-menu')
         mobileMenuButton?.addEventListener('click', () => {
@@ -45,7 +45,6 @@ import 'styles/global.css'
           })
         })
 
-        // Timeline accordion
         const timelineItems = document.querySelectorAll(
           '.timeline-item .item-header'
         )
@@ -56,7 +55,6 @@ import 'styles/global.css'
           })
         })
 
-        // Nav link active state on scroll
         const sections = document.querySelectorAll('section')
         const navLinks = document.querySelectorAll('.nav-link')
 
