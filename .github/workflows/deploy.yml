@@ -1,24 +1,18 @@
 name: Deploy to GitHub Pages
-
 on:
   push:
     branches: [ main ]
   workflow_dispatch:
-
 permissions:
   contents: read
   pages: write
   id-token: write
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
-
-      # ШАГ 1: Установка системных зависимостей для Sharp
-      # Эти библиотеки нужны для компиляции нативных модулей Sharp (libvips)
       - name: Install system dependencies for Sharp
         run: |
           sudo apt-get update
@@ -28,16 +22,12 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v3
         with:
-          version: 8 # Или укажите нужную версию pnpm
-          run_install: false # Не запускаем pnpm install сразу
-
-      # ШАГ 3: Получение пути к кэшу pnpm
+          version: latest
+          run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
         run: |
           echo "PNPM_CACHE_DIR=$(pnpm store path)" >> $GITHUB_OUTPUT
-
-      # ШАГ 4: Настройка кэширования зависимостей pnpm
       - name: Setup pnpm cache
         uses: actions/cache@v4
         with:
@@ -45,22 +35,14 @@ jobs:
           key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-
-
-      # ШАГ 5: Установка зависимостей проекта
-      # Теперь pnpm install будет иметь доступ к установленным системным библиотекам
       - name: Install project dependencies
         run: pnpm install --no-frozen-lockfile
-
-      # ШАГ 6: Сборка Astro проекта
       - name: Build Astro project
         run: pnpm run build
-
-      # ШАГ 7: Настройка артефактов для деплоя на GitHub Pages
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist # Убедитесь, что это путь к вашей папке сборки Astro
-
+          path: ./dist
   deploy:
     needs: build
     runs-on: ubuntu-latest
