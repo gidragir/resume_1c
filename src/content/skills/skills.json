@@ -44,7 +44,8 @@
       "Git (Gitlab)",
       "1С:Хранилище конфигураций",
       "SonarCube",
-      "MS SQL Server"
+      "MS SQL Server",
+      "IIS"
     ],
     "style": "bg-cyan-100 text-cyan-800"
   },
