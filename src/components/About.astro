@@ -19,6 +19,7 @@ const workExperience = calculateExperience(
 const me = {
   name: 'Балтер Илья Николаевич',
   position: 'Senior 1C Developer',
+  living: 'Казахстан, Алматы',
   description: `1С разработчик с ${workExperience} годами опыта в автоматизации бизнес-процессов на платформе 1С:Предприятие 8.3. Специализируюсь на разработке нового функционала, сложных интеграциях, оптимизации кода, а также создании регуляторных отчетов. Стремлюсь применить свой опыт для решения сложных задач и внести вклад в развитие компании.`,
 }
 
@@ -61,6 +62,9 @@ function calculateExperience(startDate: Date) {
       <h2 class="mb-6 text-xl font-medium text-teal-600 md:text-2xl">
         {me.position}
       </h2>
+      <p class="mb-6 text-sm text-stone-500">
+        {me.living}
+      </p>
       <p class="mb-6 text-base leading-relaxed text-stone-600">
         {me.description}
       </p>
